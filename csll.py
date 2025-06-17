@@ -13,6 +13,24 @@ class CSLinkedList:
         self.tail = None
         self.length = 0
 
+    def __str__(self):
+
+        if not self.head:
+            return "The list is empty."
+        
+        curr = self.head
+        result = ''
+
+        while curr:
+            result += str(curr.value)
+            curr = curr.next
+
+            if curr == self.head:
+                break
+
+            result += " -> "
+        return result
+
     def append(self, value):
         new_node = Node(value)
                                        
