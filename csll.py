@@ -44,3 +44,13 @@ class CSLinkedList:
 
         self.length += 1
 
+    def prepend(self, value):
+        new_node = Node(value)
+        if not self.head:
+            self.head = self.tail = new_node
+            new_node.next = new_node
+        else:
+            new_node.next = self.head
+            self.head = new_node
+            self.tail.next = self.head
+        self.length += 1
