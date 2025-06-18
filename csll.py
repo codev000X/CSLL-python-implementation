@@ -92,3 +92,17 @@ class CSLinkedList:
                 return "Node with mentioned value didn't found."
 
         return self.head
+
+    def count_nodes(self):
+        if  self.head is None:
+            return 0
+
+        count = 0
+        curr = self.head
+        while curr:
+            count += 1
+            curr = curr.next
+            if curr == self.head:
+                break
+        return count
+        
