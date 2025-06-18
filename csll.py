@@ -149,3 +149,23 @@ class CSLinkedList:
             second_head = second_head.next      
 
         return first_list, second_list
+
+    def is_sorted(self):
+        if not self.head or self.head.next == self.head:
+            return True
+
+        curr = self.head
+        value = float('-inf')
+
+        while curr:
+            if curr.value >= value:
+                value = curr.value
+            else:
+                return False
+
+            
+
+            if curr.next == self.head:
+                break
+            curr = curr.next
+        return True
