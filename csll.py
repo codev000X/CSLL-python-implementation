@@ -105,4 +105,49 @@ class CSLinkedList:
             if curr == self.head:
                 break
         return count
+    
+    def split_list(self):
+        if not self.head:
+            return None,None
+
+        if self.head.next == self.head:
+            return "List only has one node."
         
+
+        slow = fast = self.head
+        
+        while fast :
+            if fast.next.next == self.head:
+                break
+            else:
+                slow = slow.next
+                fast = fast.next.next
+
+            if fast.next == self.head:
+                break
+        
+        second_head = slow.next
+        
+        slow.next = self.head
+
+        second_list = CSLinkedList()
+        while second_head:
+            second_list.append(second_head.value)
+            
+            if second_head == self.tail:
+                break
+
+            second_head = second_head.next
+        
+
+
+        first_list = CSLinkedList()
+        curr_one = self.head
+        while curr_one:
+            first_list.append(curr_one.value)
+            if curr_one.next == self.head:
+                break
+        
+            curr_one = curr_one.next
+
+        return first_list, second_list
