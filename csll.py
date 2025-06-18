@@ -94,7 +94,7 @@ class CSLinkedList:
         return self.head
 
     def count_nodes(self):
-        if  self.head is None:
+        if not self.head:
             return 0
 
         count = 0
