@@ -107,15 +107,17 @@ class CSLinkedList:
         return count
     
     def split_list(self):
+
+        # For the Empty List.
         if not self.head:
             return None,None
-
+        
+        # For 1 Noded List.
         if self.head.next == self.head:
             return "List only has one node."
         
-
+        # slow , fast technique to find middle node. 
         slow = fast = self.head
-        
         while fast :
             if fast.next.next == self.head:
                 break
@@ -127,27 +129,23 @@ class CSLinkedList:
                 break
         
         second_head = slow.next
-        
         slow.next = self.head
 
-        second_list = CSLinkedList()
-        while second_head:
-            second_list.append(second_head.value)
-            
-            if second_head == self.tail:
-                break
-
-            second_head = second_head.next
-        
-
-
+        # making first_lit object.
         first_list = CSLinkedList()
         curr_one = self.head
         while curr_one:
             first_list.append(curr_one.value)
             if curr_one.next == self.head:
                 break
-        
             curr_one = curr_one.next
+
+        # Making the econd list object.
+        second_list = CSLinkedList()
+        while second_head:
+            second_list.append(second_head.value)
+            if second_head == self.tail:
+                break
+            second_head = second_head.next      
 
         return first_list, second_list
