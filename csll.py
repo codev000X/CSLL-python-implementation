@@ -169,3 +169,48 @@ class CSLinkedList:
                 break
             curr = curr.next
         return True
+
+    def insert_into_sorted(self, data):
+        new_node = Node(data)
+
+        # Checking for empty list.
+        if not self.head:
+            self.head  = self.tail = new_node
+            new_node.next = new_node
+            return True
+        
+        # Insertion in place of head.
+        if data < self.head.value:
+            new_node.next = self.head
+            self.head = new_node
+            self.tail.next = self.head
+            return True
+        
+        # Inertion after tail:
+        if data > self.tail.value:
+            self.tail.next = new_node
+            self.tail = new_node
+            new_node.next = self.head
+            return True
+
+        # Inertion in the middle of the nodes.
+        curr = self.head
+        while curr:
+            if curr.value <= data and data < curr.next.value:
+                next_node_loc = curr.next
+                curr.next = new_node
+                new_node.next = next_node_loc
+                return True
+
+            if curr.next == self.head:
+                break
+
+            curr = curr.next
+
+        # If we completed full loop and didn't insert
+        self.tail.next = new_node
+        self.tail = new_node
+        new_node.next = self.head
+        return True
+
+
