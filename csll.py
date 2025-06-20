@@ -214,3 +214,25 @@ class CSLinkedList:
         return True
 
 
+    def josephus_circle(self, step):
+        if not self.head or step < 1:
+            return "Invalid operation"
+        
+        temp = self.head
+        pre = self.head
+
+        while pre.next != self.head:
+            pre = pre.next
+
+        while temp.next != temp:
+            for _ in range(step - 1):
+                pre = temp
+                temp = temp.next
+
+            next_node = temp.next
+            pre.next = temp.next
+            temp.next = None
+            temp = next_node
+
+        return f"Last person left standing: {temp.data}"
+            
