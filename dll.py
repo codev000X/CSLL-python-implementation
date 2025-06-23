@@ -50,3 +50,12 @@ class DLL :
 
         self.length += 1
 
+    def traverse(self):
+        if self.head is None:
+            print("List is empty.")
+            return
+    
+        curr = self.head
+        while curr:
+            print(curr.value)
+            curr = curr.next
