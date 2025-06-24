@@ -59,3 +59,24 @@ class DLL :
         while curr:
             print(curr.value)
             curr = curr.next
+
+    def reverse(self):
+        if self.tail is None:
+            print("List is empty.")
+            return
+
+        curr = self.tail
+        while curr:
+            print(curr.value)
+            curr = curr.prev
+
+    def search(self,value):
+        if self.head is None :
+            return False
+        curr = self.head
+        while curr:
+            if curr.value == value:
+                return True
+
+            curr = curr.next
+        return False
