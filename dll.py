@@ -73,10 +73,13 @@ class DLL :
     def search(self,value):
         if self.head is None :
             return False
+        
         curr = self.head
+        index = 0
         while curr:
             if curr.value == value:
-                return True
+                return index
 
             curr = curr.next
+            index+=1
         return False
