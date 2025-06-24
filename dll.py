@@ -151,7 +151,6 @@ class DLL :
         self.length -= 1
         return curr
 
-
     def  pop(self):
         if self.head is None:
             return None
@@ -166,3 +165,33 @@ class DLL :
 
         self.length -= 1
         return popped_node
+    
+def remove(self, index):
+    if self.head is None or index < 0 or index >= self.length:
+        return None
+
+    popped_node = self.get(index)
+
+    if self.length == 1:
+        self.head = self.tail = None
+
+    elif index == 0:
+        self.head = self.head.next
+        self.head.prev = None
+        popped_node.next = None
+
+    elif index == self.length - 1:
+        self.tail = self.tail.prev
+        self.tail.next = None
+        popped_node.prev = None
+
+    else:
+        prev_node = popped_node.prev
+        next_node = popped_node.next
+        prev_node.next = next_node
+        next_node.prev = prev_node
+        popped_node.prev = popped_node.next = None
+
+    self.length -= 1
+    return popped_node
+
