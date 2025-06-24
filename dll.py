@@ -112,3 +112,28 @@ class DLL :
             node.value= value
             return True
         return False
+
+    def insert(self , index , value):
+
+        if index < 0 or index > self.length:
+            return "Index out of bounds."
+        
+
+        if index == 0:
+            self.prepend(value)
+            return True
+        if index == self.length:
+            self.append(value)
+            return True
+        
+        new_node = Node(value)
+        curr = self.get(index-1)
+        next_node = curr.next
+        new_node.next = next_node
+        new_node.prev = curr
+        next_node.prev = new_node
+        curr.next = new_node
+        self.length += 1
+        return True
+
+        
