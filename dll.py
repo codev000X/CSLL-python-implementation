@@ -71,6 +71,7 @@ class DLL :
             curr = curr.prev
 
     def search(self,value):
+        
         if self.head is None :
             return False
         
@@ -83,3 +84,25 @@ class DLL :
             curr = curr.next
             index+=1
         return False
+    
+
+    def get(self,index):
+        if self.head is None:
+            return "list is empty."
+        if index<0 or index>=self.length:
+            return None
+        if index < self.length//2:
+            curr = self.head
+            for _ in range(index):
+                curr = curr.next
+            
+        
+        else:
+            curr = self.tail
+            for _ in range(self.length-1 , index , -1):
+                curr = curr.prev
+
+        return curr
+
+
+        
