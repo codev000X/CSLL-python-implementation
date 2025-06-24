@@ -166,7 +166,7 @@ class DLL :
         self.length -= 1
         return popped_node
     
-def remove(self, index):
+    def remove(self, index):
     if self.head is None or index < 0 or index >= self.length:
         return None
 
