@@ -136,4 +136,33 @@ class DLL :
         self.length += 1
         return True
 
+    def pop_first(self):
+        if self.head is None:
+            return None
+
+        curr = self.head
+        if self.length == 1:
+            self.head = self.tail = None
+        else:
+            self.head = curr.next
+            self.head.prev = None
+            curr.next = None
+
+        self.length -= 1
+        return curr
+
+
+    def  pop(self):
+        if self.head is None:
+            return None
         
+        popped_node = self.tail
+        if self.length ==1 :
+            self.head = self.tail = None
+        else:    
+            self.tail = popped_node.prev
+            self.tail.next = None
+            popped_node.prev = None
+
+        self.length -= 1
+        return popped_node
