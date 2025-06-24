@@ -105,4 +105,10 @@ class DLL :
         return curr
 
 
-        
+    def set_value(self , index , value):
+
+        node = self.get(index)
+        if node:
+            node.value= value
+            return True
+        return False
